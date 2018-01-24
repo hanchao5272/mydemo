@@ -29,7 +29,7 @@ public class HandleTimeHandlerInterceptor extends HandlerInterceptorAdapter {
             sb.append("]}----------------------------------------\n");
             HandlerMethod handlerMethod = (HandlerMethod) handler;
             sb.append("Controller   :" + handlerMethod.getBean().getClass().getName());
-            
+
         }
         return true;
 
