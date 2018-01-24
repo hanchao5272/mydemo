@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 public class LoginController {
+    /**
+     * <p>Title: 模拟造数，用于登录session</p>
+     * @author 韩超@bksx 2018/1/24 17:54
+     */
     @ModelAttribute
     public User init(){
         User user = new User();
@@ -21,6 +25,10 @@ public class LoginController {
     }
 
 
+    /**
+     * <p>Title: 简单的登录演示</p>
+     * @author 韩超@bksx 2018/1/24 17:55
+     */
     @PostMapping("/login")
     public String login(HttpServletRequest request,@ModelAttribute User user, Model model){
         request.getSession().setAttribute("username",user.getUsername());
@@ -28,9 +36,13 @@ public class LoginController {
         return "/index";
     }
 
+    /**
+     * <p>Title: 简单的登出演示</p>
+     * @author 韩超@bksx 2018/1/24 17:55
+     */
     @PostMapping("/logout")
     public String logout(HttpServletRequest request){
-        request.getSession().invalidate();
+        request.getSession().setAttribute("username","");
         return "/login";
     }
 }

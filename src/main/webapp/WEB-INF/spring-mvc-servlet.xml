@@ -27,12 +27,13 @@
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <mvc:exclude-mapping path="/login.jsp"/>
-            <bean class="pers.hanchao.interceptor.session.SessonCheckHandlerInterceptor"/>
+            <mvc:exclude-mapping path="/login"/>
+            <bean class="pers.hanchao.interceptor.session.SessionCheckHandlerInterceptor"/>
         </mvc:interceptor>
         <!--方法处理时间检测-->
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <bean class="pers.hanchao.interceptor.time.HandleTimeHandlerInterceptor"/>
+            <bean class="pers.hanchao.interceptor.time.RequestInfoHandlerInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>

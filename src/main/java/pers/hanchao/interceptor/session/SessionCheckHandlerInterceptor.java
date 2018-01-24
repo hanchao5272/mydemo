@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
 /**
+ * 权限校验拦截器：简单对session进行校验，如果没有session信息则提示登录超时，并返回登录页。
+ * 针对ajax请求和非ajax请求，处理方式不一致。
  * Created by 韩超 on 2018/1/23.
  */
-public class SessonCheckHandlerInterceptor extends HandlerInterceptorAdapter {
+public class SessionCheckHandlerInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //获取session信息
@@ -25,9 +27,9 @@ public class SessonCheckHandlerInterceptor extends HandlerInterceptorAdapter {
             if ("XMLHttpRequest".equals(ajaxHeader)){
                 JsonResult jsonResult = new JsonResult(-1,"会话过期！");
                 ObjectMapper objectMapper = new ObjectMapper();
-                String strResutl = objectMapper.writeValueAsString(jsonResult);
+                String strResult = objectMapper.writeValueAsString(jsonResult);
                 PrintWriter pw = response.getWriter();
-                pw.write(strResutl);
+                pw.write(strResult);
                 pw.flush();
                 pw.close();
                 return false;

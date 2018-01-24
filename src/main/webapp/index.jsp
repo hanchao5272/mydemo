@@ -14,7 +14,7 @@
 <input type="button" onclick="world()" value="world"/>
 
 <form action="/logout" method="post">
-    <input type="button" value="登出"/>
+    <input type="submit" value="登出"/>
 </form>
 
 </body>
@@ -24,6 +24,9 @@
         $.ajax({
             url:"/world",
             type:"post",
+            data:JSON.stringify({
+                username:'0001',password:'zhangsan'
+            }),
             contentType:"application/json;charset=utf-8",
             success:function (data) {
                 alert("hello world!");
