@@ -1,0 +1,5 @@
+
+@startuml
+student.jsp -> studentcontroller : /school/student/001
+studentcontroller -> student.jsp : student
+@enduml
